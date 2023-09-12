@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const controllers = require('../controllers');
 
 const router = Router();
 
-router.get("/", (req, res) => res.status(200).send("films"));
-
-router.use("/films", require("./filmsRouter"));
+router.get("/", controllers.getFilms);
 
 module.exports = router;
