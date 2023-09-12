@@ -1,5 +1,7 @@
 const server = require("./src/server");
 
-server.listen(8001, () => {
-  console.log("Server listening on port 8001");
+const PORT = 8001;
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });

@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const controller = require('../constrollers')
 
 const router = Router();
 
-router.get("/", (req, res) => res.status(200).send("Characters"));
-
-router.use("/characters", require("./charactersRouter"));
+router.get("/", controller.getCharacters);
 
 module.exports = router;
