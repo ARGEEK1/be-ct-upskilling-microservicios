@@ -11,7 +11,23 @@ const characterSchema = new Schema({
   birth_year: String,
   gender: String,
   homeworld: { type: String, ref: "Planet" }, // referencia a el id del planeta.
-  films: [{ type: String, ref: "Films" }], // array de referencias a peliculas.
+  films: [{ type: String, ref: "Film" }], // array de referencias a peliculas.
 });
+
+characterSchema.statics.list = async function () {
+  return await this.find()
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+
+characterSchema.statics.get = async function (id) {
+  return await this.findById(id)
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+
+characterSchema.statics.insert = async function (character) {
+  return await this.create(character);
+};
 
 module.exports = characterSchema;
