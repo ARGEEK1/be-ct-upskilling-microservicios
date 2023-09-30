@@ -1,7 +1,7 @@
 const server = require("./src/server");
 
-const { Character, Film, Planet } = require("./src/database");
+const PORT = 8004;
 
-server.listen(8004, () => {
+server.listen(PORT, () => {
   console.log("Database service on PORT 8004");
 });
