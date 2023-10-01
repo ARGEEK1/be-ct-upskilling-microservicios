@@ -5,6 +5,7 @@ const middlewares = require("../middlewares");
 const router = Router();
 
 router.get("/characters", controllers.getCharacters);
-router.post("/", middlewares.characterValidation, controllers.createCharacter);
+router.get("/characters/:id", controllers.getCharacterById)
+router.post("/characters", middlewares.characterValidation, controllers.createCharacter);
 
 module.exports = router;

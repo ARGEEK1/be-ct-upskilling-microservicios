@@ -1,10 +1,17 @@
-const planets = require('./planets.json');
+//const planets = require('./planets.json');
+const axios = require("axios");
 
 module.exports = {
-  list : async () => {
-    return planets;
+  list: async () => {
+    const planets = await axios.get("http://localhost:8004/Planet");
+    return planets.data;
   },
-  create : async () => {
-    throw Error('Hubo un error al crear el planeta');
+  get: async (id) => {
+    const planet = await axios.get(`http://localhost:8004/Planet/${id}`);
+    return planet.data;
   },
-}
+  create: async (planet) => {
+    const newPlanet = await axios.post("http://localhost:8004/Planet", planet);
+    return newPlanet.data;
+  },
+};
